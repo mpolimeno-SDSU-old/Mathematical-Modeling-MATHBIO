@@ -1,0 +1,137 @@
+\documentclass[12pt]{report}
+\title{Mid Term Project}
+\usepackage{amsmath}
+%\usepackage{maplestd2e}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,shapes.misc,patterns,shapes.symbols,decorations.pathreplacing,decorations}
+\usepackage{amssymb}
+\AtBeginDocument{\renewcommand{\chaptername}{}}
+\usepackage{microtype}
+\usepackage[bottom=30 mm, top=25 mm, left=25 mm, right=25 mm]{geometry}
+\usepackage{multicol}
+\usepackage{titlesec} 
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{subfig}
+\usepackage{wasysym}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{lipsum} 
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\lstset{
+    breaklines=true,
+    tabsize=3,
+    showstringspaces=false
+}
+
+\lstdefinestyle{Common}
+{
+    extendedchars=\true,
+    language={[Visual]Basic},
+    frame=single,
+    framesep=3pt,
+    framerule=0.4pt,
+    xleftmargin=3.4pt,
+    xrightmargin=3.4pt,
+    rulecolor=\color{red}
+}
+
+\lstdefinestyle{A}
+{
+    style=Common,
+    backgroundcolor=\color{yellow!10},
+    basicstyle=\scriptsize\color{black}\ttfamily,
+    keywordstyle=\color{black},
+    identifierstyle=\color{black},
+    stringstyle=\color{red},
+    commentstyle=\color{black}
+}
+
+\makeatletter 
+\renewcommand\chapter{\thispagestyle{plain}%
+\global\@topnum\z@
+\@afterindentfalse
+\secdef\@chapter\@schapter}
+\makeatother 
+
+\titleformat{\chapter}{\bfseries\Huge}{\thechapter.\quad}{0em}{}
+
+
+\usepackage[utf8]{inputenc}
+\parindent0pt
+
+\begin{document}
+
+%\setlength{\parindent}{3ex} 
+
+\begin{large}
+
+\thispagestyle{empty}
+\begin{center}
+\begin{figure}[t]
+\centering
+%\includegraphics[scale=0.52]{sdsu_logo.png}
+\end{figure}
+\end{center}
+\begin{center}
+\Large{Department of Mathematics and Statistics}
+\end{center}
+\begin{center}
+\Large{Prof. Joseph Mahaffy}
+\end{center}
+\begin{center}
+\Large{Math 636, Mathematical Modeling}
+\end{center}
+\begin{verbatim}
+
+
+
+\end{verbatim}
+\begin{center}
+\textbf{\Huge{Homework Assignment}}
+\end{center}
+\begin{verbatim}
+
+
+\end{verbatim}
+\rule{16,5 cm}{0.4pt}\\
+\begin{center}
+\textbf{\LARGE{Models with delay}}\\[0,7 cm]
+\end{center}
+\rule{16,5 cm}{0.4pt}
+\begin{verbatim}
+
+
+\end{verbatim}
+
+\begin{center}
+ \textbf{by Matteo Polimeno} \\ 
+\textbf{12/14/2017}\\
+
+\end{center}
+\end{large}
+
+
+\newpage
+
+%\tableofcontents
+\newpage
+
+\sloppy
+
+\newpage
+
+
+\chapter{Problem 1}
+\input{Delay_Prob1}
+
+
+
+
+
+
+\end{document}

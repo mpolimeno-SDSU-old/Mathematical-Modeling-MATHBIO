@@ -1,0 +1,175 @@
+\section{Part a}
+From the transition model given, knowing that 100 frogs were released in the first habitat at $t=0$, we find the expected distribution of the tagged frogs after 1,2,5 and 10 days to be, respectively
+\begin{align*}                                     \textbf{$D_{1}$} = \begin{bmatrix} 
+42\\
+7 \\
+34 \\
+17
+\end{bmatrix},\
+\textbf{$D_{2}$} = \begin{bmatrix}
+27.94 \\
+15.97 \\
+37.54 \\
+18.55
+\end{bmatrix},\
+\textbf{$D_{5}$} = \begin{bmatrix}
+23.1737 \\
+20.6571 \\
+35.6359 \\
+20.5333
+\end{bmatrix},\
+\textbf{$D_{10}$} = \begin{bmatrix}
+23.0600 \\
+20.6914\\
+35.4725\\
+20.7762
+\end{bmatrix}
+\end{align*}
+
+\section{Part b}
+The expected distribution after a long period of time is given by the following normalized eigenvector of the eigenvalue $\lambda=1$
+\begin{align*}
+    \textbf{$D_{long}$} &= \begin{bmatrix}
+           23.06 \\
+           20.69 \\
+           35.47\\
+           20.78
+         \end{bmatrix},
+\end{align*}
+which means that, after a long period of time, about 23\% of the frogs will be living in the first habitat, around 20.7\% will be leaving on the second habitat, a little over 35\% will be living in the third habitat and around 20.8\% will be leaving in the fourth habitat. Now, as we started with 100 frogs and obviously we can't have fractionary animals, we can approximate and say that, according to our simulation, 23 frogs will be living in the first habitat, 21 in the second habitat, 35 in the third and 21 in the fourth. \\
+At a first glance, just by looking at the distribution above, it seems to be that the third habitat is the most suitable for the frogs, as a higher percentage of them will tend to move over there as time goes on, whereas the fourth and second habitats seem to be least suitable as they are the least populated by the frogs after a long period of time.\\
+However, it seems reasonable to conclude that the least suitable habitat for the frogs is the first one. In fact, it's the one from which most frogs leave as time proceeds, going from 42 after the first day to around 23 after a long period of time, which seems to suggest that frogs do not find such habitat to be suitable for them and tend to leave from it. Whereas, the second and the fourth habitat increase their number of frogs up until roughly 21, and then keep it that way as time goes on.\\
+Also, the third habitat seems to be the most stable one in terms of distribution of frogs, which seems to oscillate between 37 and 35 of the total.\\
+If we compare these results with our observations in Part a, we can see that the trend was clear already after the first day, and in fact the distribution of frogs among the habitats found after a long period of time is very much similar to the distribution found after 10 days.
+\section{Part c}
+Below is the Matlab code implemented to run a MonteCarlo simulation of this experiment run 1000 times.
+\begin{lstlisting}[style=A]
+co%Monte Carlo Simulation for Problem 2, Part c
+
+%Distribution matrix for the frogs population (not necessary, but listed to
+%see what data we are working with)
+bratakoi = [0.42 0.16 0.19 0.16;
+0.07 0.38 0.24 0.13;
+0.34 0.19 0.51 0.27;
+0.17 0.27 0.06 0.44]; 
+
+count1 = zeros(10,1000); %initializing frogs count
+count2 = zeros(10,1000);
+count3 = zeros(10,1000);
+count4 = zeros(10,1000);
+
+btk = ones(1000,100,10); %initializing and setting all 100 frogs in 
+%habitat 1 for 10 days and 1000 simulations
+
+for k = 1:10 %number of days 
+for j = 1:1000 %number of simulation
+for i = 1:100 %each individual frog goes through loop
+if btk(j,i,k) == 1 %if frog is in habitat 1, function hbt_1
+btk(j,i,k) = hbt_1; %all frogs released in habitat 1 
+%go through this function when k=1 
+elseif btk(j,i,k) == 2 %if frog is in habitat 2, function hbt_2
+btk(j,i,k) = hbt_2; %kicks in when k=2
+elseif btk(j,i,k) == 3 
+btk(j,i,k) = hbt_3; %same 
+else 
+btk(j,i,k) = hbt_4; %same
+end
+
+if btk(j,i,k) == 1 %counts # of frogs that ends up in which habitat
+count1(k,j) = count1(k,j)+1; 
+elseif btk(j,i,k) == 2
+count2(k,j) = count2(k,j)+1;
+elseif btk(j,i,k) == 3
+count3(k,j) = count3(k,j)+1;
+else
+count4(k,j) = count4(k,j)+1;
+end
+end   
+end
+btk(:,:,k+1) = btk(:,:,k); %sets the next day simulation to start with previous
+end
+
+%array btk ends up being 10 arrays, one per day, of where the 100 frogs end
+%up. Individual frogs are the columns, number of simulations are the rows.
+
+mean1 = [mean(count1(1,:)) mean(count2(1,:))... %Distribution vector 
+mean(count3(1,:)) mean(count4(1,:))]'/100;  %with mean of frogs per habitat of day 1.
+
+std1 = [std(count1(1,:)) std(count2(1,:))...  %Std deviation
+std(count3(1,:)) std(count4(1,:))]'/100;  %of frogs per habitat of day 1.
+
+mean2 = [mean(count1(2,:)) mean(count2(2,:))... %Same for day 2.
+mean(count3(2,:)) mean(count4(2,:))]'/100;
+std2 = [std(count1(2,:)) std(count2(2,:))...
+std(count3(2,:)) std(count4(2,:))]'/100;
+
+mean3 = [mean(count1(5,:)) mean(count2(5,:))... %Day 5.
+mean(count3(5,:)) mean(count4(5,:))]'/100;
+std3 = [std(count1(5,:)) std(count2(5,:))...
+std(count3(5,:)) std(count4(5,:))]'/100;
+
+mean4 = [mean(count1(10,:)) mean(count2(10,:))... %Day 10.
+mean(count3(10,:)) mean(count4(10,:))]'/100;
+std4 = [std(count1(10,:)) std(count2(10,:))...
+std(count3(10,:)) std(count4(10,:))]'/100;
+\end{lstlisting}
+
+The following are the means and standards deviation for the distribution of the frogs after 1,2,5 and 10 days respectively
+\begin{align*}
+    \textbf{$\mu_{1}$} = \begin{bmatrix}
+           43.0870 \\
+           6.8770\\
+           33.9890\\
+           16.0470
+         \end{bmatrix},\
+    \textbf{$\sigma_{1}$} = \begin{bmatrix}
+           4.8260\\
+           2.5535\\
+           4.6539\\
+           3.7639
+         \end{bmatrix},
+\end{align*}
+\begin{align*}
+    \textbf{$\mu_{2}$} = \begin{bmatrix}
+           29.0390 \\
+           15.9640\\
+           37.6650\\
+           17.3320
+         \end{bmatrix},\
+    \textbf{$\sigma_{2}$} = \begin{bmatrix}
+           4.6044\\
+           3.5422\\
+           4.9080\\
+           3.8197
+         \end{bmatrix},
+\end{align*}
+\begin{align*}
+    \textbf{$\mu_{5}$} = \begin{bmatrix}
+           24.3480 \\
+           20.6410\\
+           35.8830\\
+           19.1280
+         \end{bmatrix},\
+    \textbf{$\sigma_{5}$} = \begin{bmatrix}
+           4.2866\\
+           4.1409\\
+           4.9762\\
+           3.8772
+         \end{bmatrix},
+\end{align*}
+\begin{align*}
+    \textbf{$\mu_{10}$} = \begin{bmatrix}
+           24.4670 \\
+           20.5220\\
+           35.7660\\
+           19.2450
+         \end{bmatrix},\
+    \textbf{$\sigma_{10}$} = \begin{bmatrix}
+           4.4979\\
+           4.0007\\
+           4.8298\\
+           3.7645
+         \end{bmatrix}.
+\end{align*}
+
+As we can see, the mean values obtained with the Monte Carlo simulation are all within the standard devation, if compared to our previous results from Part a.

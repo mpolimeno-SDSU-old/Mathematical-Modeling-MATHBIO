@@ -1,0 +1,52 @@
+We know that a stochastic birth only process could be represented by the following differential equation
+$$
+\frac{dP_{N}}{dt} + \lambda NP_{N} = \lambda (N-1)P_{N-1},
+$$
+with 
+\[ 
+P_{N}(0) =  
+\begin{cases} 
+      					0 & N\neq N_{0} \\
+     					 1 & N =  N_{0} 
+\end{cases}
+\]
+
+We know from lecture that 
+$$
+P_{N_{0}}(t) = e^{-\lambda}N_{0}t
+$$
+$$
+P_{N_{0}+1}(t) = N_{0}e^{-\lambda N_{0}t}(1-e^{-\lambda t}),
+$$ 
+$$
+\dots
+$$
+$$
+P_{N_{0}+j}=\frac{N_{0}(N_{0}+1)\dots(N_{0}+j-1)}{j!}e^{-\lambda N_{0}t}(1-e^{-\lambda t})^{j}.
+$$
+we want to prove by induction that this holds for all possible $j$'s.
+So, we know from literature that the relationship holds for $j=0,1$. Now, let's pick a $j_{0}$ such that $j \leq j_{0}$ and let's assume that the $P_{N_{0}+j}$ would hold for such values.
+Using this assumption, we now have to prove that the statement holds for the next value $j_{0}+1$ and we will be done.\\
+Thus, we have to determine $P_{N_{0}+j_{0}+1}$ using our differential equation with $N=N_{0}+j_{0}+1$. Using the formula for $P_{N_{0}+j_{0}}$, which is valid by our assumption, we get
+$$
+\frac{dP_{N_{0}+j_{0}+1}}{dt} + \lambda (N_{0}+j_{0}+1)P_{N_{0}+j_{0}+1} = \frac{N_{0}(N_{0}+1)\dots(N_{0}+j_{0})}{j_{0}!} e^{-\lambda N_{0} t} (1-e^{-\lambda t})^{j_{0}},
+$$
+where the initial condition is $P_{N_{0}+j_{0}+1}(0)=0$.\\
+Here we show the various passages used to solve that derivative
+\begin{align*}
+\frac{dP_{N_0+j_{0}+1}(t)}{dt}&=\frac{N_0(N_0+1)\dots(N_0+j_{0})}{(j_{0}+1)!}\left((-\lambda N_0)e^{-\lambda N_0 t}(1-e^{-\lambda t})^{j_{0}+1}+e^{-\lambda N_0 t}(j_{0}+1)(1-e^{-\lambda t})^{j_{0}}(\lambda e^{-\lambda t})\right)\\
+&=\frac{N_0(N_0+1)\dots(N_0+j_{0})}{(j_{0}+1)!}\left((- N_0)(1-e^{-\lambda t})+(j_{0}+1)(e^{-\lambda t})\right)\lambda(1-e^{-\lambda t})^{j_{0}}e^{-\lambda N_0 t}\\
+&=\frac{N_0(N_0+1)\dots(N_0+j_{0})}{(j_{0}+1)!}\left(- N_0+N_0e^{-\lambda t}+e^{-\lambda t}+j_{0}e^{-\lambda t}\right)\lambda(1-e^{-\lambda t})^{j_{0}}e^{-\lambda N_0 t}\\
+&=\frac{N_0(N_0+1)\dots(N_0+j_{0})}{(j_{0}+1)!}\left(- N_0+e^{-\lambda t}(N_0+j_{0}+1)\right)\lambda(1-e^{-\lambda t})^{j_{0}}e^{-\lambda N_0 t}\\
+&= \frac{N_0(N_0+1)\dots(N_0+j_{0})}{(j_{0}+1)!}\left(-N_0-(j_{0}+1) +(N_0+j_{0}+1)e^{-\lambda t}+(j_{0}+1) \right)\lambda e^{-\lambda N_0 t}(1-e^{-\lambda t})^j_{0}\\
+&= \frac{N_0(N_0+1)\dots(N_0+j_{0})}{(j_{0}+1)!}\left(-(N_0+j_{0}+1) (1-e^{-\lambda t})+(j_{0}+1) \right)\lambda e^{-\lambda N_0 t}(1-e^{-\lambda t})^j_{0}\\
+&= - \lambda (N_0+j_{0}+1) \frac{N_0(N_0+1)\dots(N_0+j)}{(j_{0}+1)!}e^{-\lambda N_0 t}(1-e^{-\lambda t})^{j_{0}+1}+\\
+&+\lambda (N_0+j_{0}) \frac{N_0(N_0+1)\dots(N_0+j_{0}-1)}{j_{0}!}e^{-\lambda N_0 t}(1-e^{-\lambda t})^{j_{0}}\\
+&=\lambda (N_0+j_{0}) P_{N_0+j_{0}} - \lambda (N_0+j_{0}+1) P_{N_0+j_{0}+1}
+\end{align*}
+We can now compute the solution to this differential equation, which is found to be
+$$
+P_{N_{0}+j_{0}+1}=\frac{N_{0}(N_{0}+1)\dots(N_{0}+j_{0})}{(j_{0}+1)!}e^{-\lambda N_{0}t}(1-e^{-\lambda t})^{j_{0}+1}.
+$$
+Since we see that the formula holds for $j_{0}+1$ and, from our induction assumption, $j \leq j_{0}$ , then the formula holds for any value of $j$.
+			

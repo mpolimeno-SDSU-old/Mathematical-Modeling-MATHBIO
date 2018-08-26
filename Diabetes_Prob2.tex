@@ -1,0 +1,108 @@
+\section{Part b}
+Studying the reduced 3-D model for diabetes in NOD mice by Mahaffy and Edelstein-Keshet 
+
+$$\frac{dA}{dt} = (\sigma + \alpha_{1}M)f_{1}(p) - (\beta + \delta_{A})A - \epsilon A^{2}$$, \\
+$$\frac{dM}{dt} = \beta 2^{m1}f_{2}(p)A - f_{1}(p)\alpha_{2}M - \delta_{M}M,$$\\
+$$
+\frac{dE}{dt}= \beta 2^{m2}(1-f_{2}(p))A - \delta_{E}E, \\
+$$
+$$
+p \approx (RB/\delta_{p})E, \\
+$$
+$$f_{1}(p) = \frac{p^{n}}{k_{1}^{n} + p^{n}},$$
+$$
+f_{2}(p)= \frac{ak_{2}^{m}}{k_{2}^{m} + p^{m}}. \\
+$$
+
+With the parameters given in the problem, we found three equilibria.\\
+The first equilibrium corresponds to the healthy state (disease-free equilibrium) and it's found to be at the origin. Thus we have
+$$
+(A_{e},M_{e},E_{e})= (0,0,0),
+$$
+where\\
+A=Activated T-cells,\\ M=Memory cells,\\ E=Effector or killer T-cells.
+To investigate the stability of this equilibrium we find its eigenvalues, which are found to be\\
+$\lambda_{1}=-1, \lambda_{2}=-0.3, \lambda_{3}=-0.01$.\\
+These values are in accordance with what was expected from literature, since we know that the characteristic equation for the Jacobian evaluated at the origin has purely negative eigenvalues given by\\
+$\lambda_{1}=-\beta - \delta_{A}, \lambda_{2}=-\delta_{M}, \lambda_{3}=-\delta_{E}.$\\
+Since all of the eigenvalues are real and negative, then we can conclude that the disease-free equilibrium is a stable node. Since the origin is an attractor then, for any sufficiently weak perturbation, the system should stay in this stable state, meaning that if a disturbance takes place altering the homeostatic conditions of the mice, the situation will tend to stabilyse. Biologically speaking, in this case there are no activated T-cells, therefore they cannot kill $\beta$-cells and Type-1 diabetes will not rise, so the mice stay healthy.\\
+
+The second equilibrium is found at 
+$$
+(A_{e},M_{e},E_{e})= (0.1255,0.0141,0.0374).
+$$
+This is the diseased-state equilibrium and the eigenvalues are found to be\\
+$\lambda_{1}=-2.4183, \lambda_{2,3}=0.0089 \pm 0.5702i$.\\
+So in this case we have one real eigenvalue and a pair of complex conjugates, whose real part has opposite sign to the real eigenvalue. This indicates that the diseased equilibrium is a so-called saddle-focus: it has an attractive direction in one dimension (an attractive line) connected to the real eigenvalue and a repulsive direction in two dimensions connected to the complex eigenvalues (a repelling spiral plane). This type of equilibrium is always unstable, so we can say that the diseased-state equilibrium is an unstable node.\\
+Biologically, this equilibrium corresponds to a state of elevated immune-cells level. Basically, T-cells have been activated (in fact $A$ is greater than zero) and many of them have become Effector T-cells (cytotoxic T-lymphocytes or CTLs). CTLs are efficient specific killers which continuously attack and destroy $\beta$-cells in the pancreas. This is an autoimmune attack that leads to diabetes. Since this equilibrium is unstable, then only the origin is an attractor.\\
+
+The third equilibrium is found at
+$$
+(A_{e},M_{e},E_{e})= (0.0162,1.1294,0.00108).
+$$
+We know from literature that this is a saddle node and its eigenvalues confirm that, as they are found to be\\
+$\lambda_{1}=-1.534, \lambda_{2}=-0.0188, \lambda_{3}=0.2095$.\\
+Since we have two negative eigenvalues (which indicate an attractive direction) and one positive eigenvalue (repelling direction), this equilibrium is in fact a saddle node. Therefore, it has a 2-D stable manifold (a plane that is locally attracted to the saddle node) and a 1-D unstable manifold (a line that is locally repelled away from the saddle node).\\
+In order to better investigate its behavior, we simulate this system with a different set of initial conditions and we plot the results:
+
+\begin{figure}[H]
+	\subfigure[]{\includegraphics[scale=0.6]{Quasi_Steady_Part1.jpg}}
+	\subfigure[]{\includegraphics[scale=0.6]{Quasi_Steady_Part1_Zoom3.jpg}}
+	\caption{a)QSS Model - Simulation; b) Zoom in on stable oscillations}
+\end{figure}
+
+We see from Fig.2.1a that when there are no Activated T-cells ($A$ value) and consequently no Effector T-cells ($E$ value), then for any nonzero value of the memory cells ($M$ value), all solutions will tend towards the healthy state located at the origin, as it can be seen by looking at the red line in Fig.2.1a.\\
+On the other hand, when $A> 0$, we see that the solutions tend to oscillate in a stable manner around the diseased-state, as can be readily seen by zooming in on the plot (Fig.2.1b).\\ So, globally, if there is a nonzero number of T-cells that have been activated, which seems to be a reasonable outcome for many T-cells that undergo a set of interactions with antigen presenting cells (APCs) in the Lymph nodes, then the system will tend to oscillate around the diseased-state. Thus, T-cells will continuously kill $\beta$-cells, generating an autoimmune attack that will lead to the mice getting diabetes. This is also confirmed by looking at the given value of the peptide clearance rate $\delta_{p}=1$, a parameter that is often studied, as it is believed that poor clearance could induce diabetes. The normal range for $\delta_{p}$ is considered to be between 2.5 and 3.5. In our case, we have a value of 1 which is less than half the normal range of values for $\delta_{p}$ and this corresponds to a diseased-state. Since we do not have a normal state, then we can say something more about the nature of the manifolds found for the third equilibrium: for our given values of the parameters, the 2-D stable manifold separates the healthy-state from the diseased equilibria. Since we see that most solutions oscillate around the saddle node, then it is reasonable to say that most stimuli fall on the wrong side of the separatrix and are attracted to the diseased-equilibrium.\\
+In conclusion, it is reasonable to state that the mice will get diabetes in this case of study.\\
+
+\section{Part c}
+
+In this case of study the value of the parameter $\delta_{p}$ has been changed from 1 to 1.5.\\
+The first equilibrium corresponds to the healthy state (disease-free equilibrium) and it's again found to be at the origin. Thus we have
+$$
+(A_{e},M_{e},E_{e})= (0,0,0).
+$$
+
+To investigate the stability of this equilibrium we find its eigenvalues, which are found to be\\
+$\lambda_{1}=-1, \lambda_{2}=-0.3, \lambda_{3}=-0.01$,\\
+which correspond to the same values found in the previous case, as expected since the values of the constant $\beta, \delta_{A}, \delta_{M}, \delta_{E}$ are left unchanged.
+
+Once again, since all the eigenvalues are real and negative, we can conclude that the disease-free equilibrium is a stable node. Since the origin is an attractor, then, for any sufficiently weak perturbation, the system should stay in this stable state, meaning that if a disturbance takes place altering the homeostatic conditions of the mice, the system will tend back towards stability. Biologically speaking, in this case there are no activated T-cells, therefore there are no effector T-cells to kill $\beta$-cells and Type-1 diabetes cannot rise, so the mice stay healthy.\\
+
+The second equilibrium is found at 
+$$
+(A_{e},M_{e},E_{e})= (0.1844,0.0231,0.0544).
+$$
+This is the diseased-state equilibrium and the eigenvalues are found to be\\
+$\lambda_{1}=-2.5013, \lambda_{2,3}=0.0099 \pm 0.5735i$.\\
+So in this case we have one real eigenvalue and a pair of complex conjugates, whose real part has opposite sign to the real eigenvalue. This indicates that the diseased equilibrium is a so-called saddle-focus: it has an attractive direction in one dimension (an attractive line) connected to the real eigenvalue and a repulsive direction in two dimensions connected to the complex eigenvalues (a repelling spiral plane). This type of equilibrium is always unstable, so we can say that the diseased-state equilibrium is an unstable node.\\
+Biologically, this equilibrium corresponds to a state of elevated immune-cells level. Basically, T-cells have been activated (in fact $A$ is greater than zero) and many of them have become Effector T-cells (cytotoxic T-lymphocytes or CTLs). CTLs are efficient specific killers which continuously attack and destroy $\beta$-cells in the pancreas. This is an autoimmune attack that leads to diabetes. Since this equilibrium is unstable, then only the origin is an attractor.\\
+
+The third equilibrium is found at
+$$
+(A_{e},M_{e},E_{e})= (0.0244,1.7001,0.0016).
+$$
+We know from literature that this is a saddle node and its eigenvalues confirm that, as they are found to be\\
+$\lambda_{1}=-1.549, \lambda_{2}=-0.0188, \lambda_{3}=0.2077$.\\
+Since we have two negative eigenvalues (which indicate an attractive direction) and one positive eigenvalue (repelling direction), this equilibrium is in fact a saddle node. Therefore, it has a 2-D stable manifold (a plane that is locally attracted to the saddle node) and a 1-D unstable manifold (a line that is locally repelled away from the saddle node).\\
+In order to better investigate its behavior, we simulate this system with a different set of initial conditions and we plot the results:
+
+\begin{figure}[H]
+	\subfigure[]{\includegraphics[scale=0.6]{Quasi_Steady_Part2.jpg}}
+	\subfigure[]{\includegraphics[scale=0.6]{Quasi_Steady_Part2_Zoom.jpg}}
+	\caption{a)QSS Model - Simulation; b) Zoom in on stable oscillations}
+\end{figure}
+
+We see from Fig.2.2a that when there are no Activated T-cells ($A$ value) and consequently no Effector T-cells ($E$ value), then for any nonzero value of the memory cells ($M$ value), all solutions will tend towards the healthy state located at the origin, as it can be seen by looking at the green line in Fig.2.2a.\\
+On the other hand, when $A> 0$, we see that the solutions tend to oscillate in a stable manner around the diseased-state, as can be readily seen by zooming in on the plot (Fig.2.2b).\\ So, globally, if there is a nonzero number of T-cells that have been activated, which seems to be a reasonable outcome for many T-cells that undergo a set of interactions with antigen presenting cells (APCs) in the Lymph nodes, then the system will tend to oscillate around the diseased-state. Thus, T-cells will continuously kill $\beta$-cells, generating an autoimmune attack that will lead to the mice getting diabetes. This is also confirmed by looking at the given value of the peptide clearance rate $\delta_{p}=1.5$. The normal range for $\delta_{p}$ is considered to be between 2.5 and 3.5. In our case, we have a value of 1.5 which is about half the normal range of values for $\delta_{p}$. \\
+Also, since we do not have a normal state, we can say that, for our given values of the parameters, the 2-D stable manifold separates the healthy-state from the diseased equilibria. Since we see that most solutions oscillate around the saddle node, then it is reasonable to say that most stimuli fall on the wrong side of the separatrix and are attracted to the diseased-equilibrium.\\
+
+To further analyse the system we should also consider the following relationship
+$$
+p \approx \frac{RB}{\delta_{p}}E,
+$$
+which is the Quasi-Steady State peptide expression, where $B$ is the fraction of remaining $\beta$-cells and $R$, for our intended purposes, is a constant.\\
+Since the value of $\delta_{p}$ has increased by 50\%, we expect the value of $p$ to decrease, as the other parameters are left untouched. Because of their inversely proportional relationship, an increase in $\delta_{p}$ is equivalent to a decrease in $B$, which means more $\beta$-cells would be dying. Therefore, compared to our previous system, in this case we should have a higher number of dying $\beta$-cells, which implies a higher number of activated T-cells and hence a higher number of effector T-cells. So the $\beta$-cells of the mice are likely killed at a higher rate than in the previous case, hence diabetic conditions should rise faster.\\
+However, locally the situation appears rather similar in both cases, if we just look at the graphs. In fact, as we can see in Fig.2.2b, most solutions tend to oscillate in a stable manner around the diseased-state equilibrium. The main difference appear to be an increase in the amplitude of the oscillations around the saddle node (diseased-equilibrium), as expected by the increase in the value of $\delta_{p}$.\\
+Globally, the qualitative behavior is similar to the previous case of study as the mice will still get diabetes in this case, as well.
+

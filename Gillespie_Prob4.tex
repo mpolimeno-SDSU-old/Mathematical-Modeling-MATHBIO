@@ -1,0 +1,105 @@
+\section{Part a}
+Using the data and information given, we found the average survival rates $s_{12}$, $s_{23}$ and $s_{33}$ to be
+$$
+s_{12} = 0.3564,
+$$
+$$
+s_{23} = 0.7339 = s_{33}.
+$$
+
+As for the average birth rates $b_{2}$ and $b_{3}$ we found
+$$
+b_{2} = 0.8118,
+$$
+$$
+b_{3} = 2.0038.
+$$
+
+\section{Part b}
+From the results found in Part a, we can build the following Leslie matrix
+\begin{align}
+L  &= \begin{bmatrix}
+0 & 0.8118 & 2.0038\\
+0.3564 & 0 & 0\\
+0 & 0.7339 & 0.7339
+\end{bmatrix}.
+\end{align}
+
+Using this matrix we found the population for each of the age classes over the next three years and the following are results in vector form starting with the population after 1 year
+
+\begin{align}
+\textbf{$P_{1}$} &= \begin{bmatrix}
+365.2366\\
+110.8404\\
+173.9343
+\end{bmatrix},
+\end{align}
+
+so the population for the first age group (0-1 years old) after one year will be about 365 birds, for the second age group (1-2 years old) will be about 111 birds and for the third group (older than 2 years old) will be about 174 birds.\\
+Now the population vector for the distribution after 2 years
+
+\begin{align}
+\textbf{$P_{2}$} &= \begin{bmatrix}
+438.5098\\
+130.1703\\
+208.9962
+\end{bmatrix},
+\end{align}
+
+so the population for the first age group (0-1 years old) after two years will be about 439 birds, for the second age group (1-2 years old) will be about 130 birds and for the third group (older than 2 years old) will be about 209 birds.\\
+
+Now the population vector for the distribution after 3 years
+
+\begin{align}
+\textbf{$P_{3}$} &= \begin{bmatrix}
+524.4588\\
+156.2849\\
+248.9143
+\end{bmatrix},
+\end{align}
+
+so the population for the first age group (0-1 years old) after two years will be about 524 birds, for the second age group (1-2 years old) will be about 156 birds and for the third group (older than 2 years old) will be about 249 birds.\\
+
+\section{Part c}
+The eigenvvalues for the model are found to be
+$$
+\lambda_{1} = -0.2303 + 0.4560i,
+$$
+$$
+\lambda_{2} = -0.2303 - 0.4560i,
+$$
+$$
+\lambda_{3} = 1.1946,
+$$
+
+so we have a pair of complex conjugates (both with negative real part) and a real positive eigenvalue, which is the dominant one.\\
+The eigenvectors for $\lambda_{1}$, $\lambda_{2}$ and $\lambda_{3}$, respectively, are found to be
+\begin{align*}                                     \textbf{$V_{1}$} = \begin{bmatrix} 
+0.7631\\
+-0.2400 - 0.4752i \\
+0.0095 + 0.3662i
+\end{bmatrix},\
+\textbf{$V_{2}$} = \begin{bmatrix}
+0.7631 \\
+-0.2400 + 0.4752i \\
+0.0095 - 0.3662i
+\end{bmatrix},\
+\textbf{$V_{3}$} = \begin{bmatrix}
+0.8721 \\
+0.2602 \\
+0.4145
+\end{bmatrix}.
+\end{align*}
+The limiting age population in each of the age classes is found to be
+\begin{align*}                                     \textbf{$P_{e}$} = \begin{bmatrix} 
+0.5638\\
+0.1682\\
+0.2680
+\end{bmatrix}.
+\end{align*}
+Therefore, given our dominant eigenvalue of $\lambda_{3} = 1.1946$, we see that, once the population reaches this limiting distribution, the approximate annual growth rate is 19\%.\\
+To find the time that it takes for the population to double we simply compute
+$$
+\frac{\log(2)}{1.1946} = 3.8985,
+$$
+therefore the population doubles after roughly 3 years and 11 months.

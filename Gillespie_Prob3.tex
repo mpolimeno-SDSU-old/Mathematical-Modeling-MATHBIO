@@ -1,0 +1,49 @@
+\section{Part a}
+$P_{n}$ is a vector that varies discretely with time. Let $L$ be our Leslie Matrix with $P_{n} = [P_{1}, P_{2}, P_{3}, P_{4}]_{n}^{T}$ the population vector at time $n$ divided in 4 age classes (0-1,1-2,2-3,3-4). Then the Leslie Model is
+$$
+P_{n+1}=LP_{n},
+$$
+where $L$ is our Leslie matrix defined as
+\begin{align}
+L  &= \begin{bmatrix}
+0 & 1.5 & 2.2 & 3.4 \\
+0.4 & 0 & 0 & 0 \\
+0 & 0.7 & 0 & 0\\
+0 & 0 & 0.75 & 0
+\end{bmatrix}.
+\end{align}
+To find the steady-state percentage for each age group with build a model and run it. The dominant eigenvalue is found to be $\lambda$=1.2465, which implies that the population growth is about 25\% over a 1-year period. The associated eigenvector is found to be\\
+\begin{align}
+\textbf{$P_{e}$} &= \begin{bmatrix}
+0.6213\\
+0.1994\\
+0.1120\\
+0.0674
+\end{bmatrix},
+\end{align}
+this shows that the steady-state distribution should be approximately 62\% in the 0-1 age group, about 20\% in the 1-2 age group, about 11\% in the 2-3 age group and finally a little less than 7\% in the 3-4 age group.\\
+The time that it takes for the population to double after reaching its steady-state distribution is found to be
+$$
+t=3.1460,
+$$
+thus this population, according to this model, will double in size after roughly 3 years and two months.
+
+\section{Part b}
+The survival rates $s_{2}$ and $s_{4}$ is reduced by a fraction $\alpha$, so that the survival rate of 1-2 years old is 0.7$\alpha$ and the survival rate of 2-3 years old is 0.75$\alpha$. We compute the value of $\alpha$ in MatLab and we find it to be
+$$
+\alpha = 0.4324.
+$$
+Then, for this value of $\alpha$ and 550 mature (3-4 years old) animals, we determine the total population to be
+$$
+P_{tot} = 20066,
+$$
+whereas the population for each age group is found to be
+\begin{align}
+\textbf{$P_{e}$} &= \begin{bmatrix}
+12860\\
+5144\\
+1557\\
+505
+\end{bmatrix}.
+\end{align}
+As for the total number of animals harvested each year under this conditions, this is found to be roughly equal to 834.

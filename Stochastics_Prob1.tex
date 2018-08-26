@@ -1,0 +1,148 @@
+\section{Part a}
+
+We perform two Monte Carlo simulations for the Schmitz and Kwak study of the Deaconesse Hospital, using the following assumptions:\\
+1) The daily case load is assumed to be fixed at 32 cases.\\
+2) Random numbers are generated independently for each day.\\
+3) All ENT, urology, and ophthalmology cases last 0.5 hours.\\
+4) Half the urology cases and all ophthalmology cases do not go to the recovery room.\\
+5) All ENT and the other half of urology cases go to the recovery room and are assumed to stay for 1.5 hours.\\
+6) Any operation over 0.5 hours is considered major and requires 3 hours in the recovery room.\\
+7) Surgery begins at 7:30 AM.\\
+8) Preparation time is 0.25 hours in the operating room.\\
+9) It takes 0.08 hours to transport patients from operating room to the recovery room.\\
+10) It takes 0.25 hours to prepare the recovery room for the next occupant.\\
+11) Operating rooms are used continuously as need arises with the first one vacated being the first one used.\\
+12) The first vacated recovery bed is the first one filled as needed.\\
+13) If no bed is available in the recovery room, then a new one is created.\\
+
+Moreover, the simulation is run twice with 4 Operating Rooms and twice with 5 Operating Rooms.
+The 32 cases scheduled for the day are assigned 32 random numbers.
+The random numbers decide the type of surgery, which in turn determines how long the patient has surgery and if the patient goes to the recovery room and for how long.
+The surgeries start at 7:30 AM filling the 4(5) operating rooms. Immediately after surgery each patient is transported, and the operating room is cleared for the next patient waiting.
+The rules are followed until all 32 patients are seen, and the operating rooms and ICU beds are cleared.\\
+We are asked to find the latest times at which the operating rooms and the recovery rooms are open in both scenarios.\\
+We start by finding those times for the two 4-operating-rooms simulations. We call $MCMC_{4_{I}}$ the first simulation and $MCMC_{4_{II}}$ the second simulation respectively. For the latest times that the operating rooms are open, we get
+$$
+MCMC_{4_{I}} = 17.75
+$$
+$$
+MCMC_{4_{II}} = 19.75,
+$$
+which means that in the two simulations with 4 operating rooms available, in the first case said rooms are open until 5:45PM, whereas in the second simulation, the operating rooms are open until 7:45PM.\\
+This means that in the first simulation, since we assumed that surgery begins at 7:30AM, which is then the time at which operating rooms are first open, the operating rooms stay open for 10 hours and 15 minutes. In the second simulation, the operating rooms stay open for 12 hours and 15 minutes.\\
+Therefore the average length of time that the 4 operating rooms are open each day for our two simulations is
+$$
+MCMC_{4_{Avg.t - I}} = 10.0625hrs
+$$
+$$
+MCMC_{4_{Avg.t - II}} = 10.25hrs,
+$$
+which are, respectively, 10 hours and roughly 4 minutes, and 10 hours and 15 minutes.\\ 
+Given these long periods, this is a first indication that 4-operating rooms might not be an optimised value to properly and promptly run operations in the hospital.\\
+As for the latest time at which the recovery rooms are open, we get
+$$
+MCMC_{4_{Recovery-I}} = 20.83
+$$
+$$
+MCMC_{4_{Recovery-II}} = 22.83,
+$$
+which means that in the first case the recovery rooms stay open until 8:55PM ca., whereas in the second simulation they close at 10:55PM ca.\\
+
+Now, we list the results found for the two 5-operating-rooms simulations. For the latest time at which the operating rooms are open, we have
+$$
+MCMC_{5_{I}} = 16.25
+$$
+$$
+MCMC_{5_{II}} = 18.25,
+$$
+which means that, in the first simulation operating rooms stay open until 4:15PM, whereas in the second one they stay open until 6:15PM. So in the first simulation, operating rooms stay open for 8 hours and 45 minutes (again, opening time is 7:30AM), whereas in the second simulation the operating rooms stay open for 10 hours 45 minutes.\\
+Therefore the average length of time that the 5 operating rooms stay open for these two simulations is
+$$
+MCMC_{5_{Avg.t - I}} = 8.35hrs
+$$
+$$
+MCMC_{5_{Avg.t - II}} = 8.40hrs,
+$$
+which are, respectively, 8 hours and 21 minutes and 8 hours and 24 minutes.\\
+Confronting the average lengths of time that the operating rooms stayed open for the two simulations with the 4 operating rooms and the 5 operating rooms, our simulations seem to suggest that having 5 operating rooms available to perform daily surgeries seems to be a more efficient way to run operations at the hospital, as all 32 patients were taken care of, with regard to surgery, in less time.\\
+Now for the latest times at which recovery rooms were open, we find
+$$
+MCMC_{5_{Recovery-I}} = 19.33
+$$
+$$
+MCMC_{5_{Recovery-II}} = 21.33,
+$$
+which means that for the first simulation, the recovery rooms stay open until 7:20PM ca., whereas for the second simulation, the operating rooms stay open until 9:20PM ca.\\
+Again, this seems to indicate that using 5 operating rooms would reduce the overall staying of each patient (surgery plus recovery), thus guaranteeing a more efficient way to run the hospital.
+
+\section{Part b}
+We assume that the recovery room must be staffed at all times by at least two nurses and that each nurse can handle at most 3 patients. Also, each nurse can only work an integer number of hours.\\
+Then, according to our simulations, the number of nursing hours required to staff the recovery room is found to be
+$$
+MCMC_{4_{Nursing hrs-I}} = 39
+$$
+$$
+MCMC_{4_{Nursing hrs-II}} = 39,
+$$
+for the two 4-operating-rooms simulations.\\
+Whereas, for the two simulations with 5 operating rooms, we have
+ $$
+MCMC_{5_{Nursing hrs-I}} = 38
+$$
+$$
+MCMC_{5_{Nursing hrs-II}} = 40.
+$$
+
+\section{Part c}
+For this section, we are asked to run the simulations for 4 and 5 operating rooms 100 times and to provide  the mean longest time for both the operating and recovery rooms, mean average time of operating rooms being used, and the mean number of hours that are needed
+for the nursing staff in the recovery room. Also, we are asked to compute the standard deviation (variance) of all of this information.\\
+Attached to this page there is the Matlab code built to solve this problem.\\
+
+\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+ \hline
+ \multicolumn{4}{|c|}{4 Operating Rooms MCMC - Computed Values} \\
+ \hline
+ Mean Time Op. Room Used&Mean Time Rec. Room Used&Mean Avg. Op. Room Used&Nursing Hours\\
+ \hline
+ 17.4150  & 20.4800 & 8.8350 &   38.5900\\
+ \hline
+ \end{tabular}\\
+ 
+ For these values, we compute the respective standard deviations to be
+ \vspace{0.1mm}
+ 
+  \begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+  \hline
+  \multicolumn{4}{|c|}{4 Operating Rooms MCMC - Standard Deviations} \\
+   \hline
+ $\sigma$ for Mean Time Op. Room Used&$\sigma$ for Mean Time Rec. Room Used&$\sigma$ for Mean Avg. Op. Room Used&$\sigma$ for Nursing Hours\\
+ \hline
+ 1.3148&  1.3276 & 0.9425 &4.6059\\
+ \hline
+\end{tabular}\\
+
+\vspace{2mm}
+Now we do the same for the 5-operating-rooms simulations and we obtain
+
+\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+ \hline
+ \multicolumn{4}{|c|}{5 Operating Rooms MCMC - Computed Values} \\
+ \hline
+ Mean Time Op. Room Used&Mean Time Rec. Room Used&Mean Avg. Op. Room Used&Nursing Hours\\
+ \hline
+ 15.9900  & 19.0575 & 7.2775 &   39.5300\\
+ \hline
+ \end{tabular}\\
+ 
+ For these values, we compute the respective standard deviations to be
+ \vspace{0.1mm}
+ 
+  \begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+  \hline
+  \multicolumn{4}{|c|}{5 Operating Rooms MCMC - Standard Deviations} \\
+  \hline
+ $\sigma$ for Mean Time Op. Room Used&$\sigma$ for Mean Time Rec. Room Used&$\sigma$ for Mean Avg. Op. Room Used&$\sigma$ for Nursing Hours\\
+ \hline
+ 1.1907&  1.2113& 0.7757 &5.0681\\
+ \hline
+\end{tabular}

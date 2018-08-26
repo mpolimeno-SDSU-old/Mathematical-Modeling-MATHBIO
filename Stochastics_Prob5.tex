@@ -1,0 +1,40 @@
+\section{Part a}
+The expected population $E(t)$ at time $t$ is given by the formula
+$$
+E(t) = \sum_{j=0}^{\infty} (N_{0}+j)P_{N_{0}+j}(t),
+$$
+which holds for birth-only stochatics process. I.e. the population never decreases in size, so it can either increase or stay the same for some given interval of values of $j$. Thus, if we assume that our population can only be described by discrete integer numbers (as you cannot have "fractions" of individuals), then we can write the expected population at time $t$ as
+$$
+E(t) = \sum_{j=0}^{\infty}(j)P_{j}(t).
+$$
+Also, the initial value of the population cannot be zero, otherwise it will not produce offspring, and it obviously cannot be negative, as negative populations do not make physical sense. So the initial population has to have some value $N_{0} > 0$.\\
+Therefore we have that $P_{j}(t) = 0$ for $j < N_{0}$. Thus, 
+$$
+E(t)=\sum_{j=0}^{\infty}(j)P_{j}(t)=\sum_{j=N_0}^{\infty}(j)P_{j}(t)=\sum_{j=0}^{\infty}(N_0+j)P_{N_0+j}(t).
+$$
+which is our formula for $E(t)$.
+
+\section{Part b}
+We want to show that $E(t)=N_0 e^{\lambda t}$. Therefore, let's take the derivative of $E(t)$ as defined in Part a:
+\begin{align*}
+\frac{dE(t)}{dt}&=\sum_{j=0}^{\infty}(N_0+j)\frac{dP_{N_0+j}(t)}{dt}\\
+&=\sum_{j=0}^{\infty}(N_0+j)\left(-\lambda (N_0+j) P_{N_0+j} +\lambda (N_0+j-1) P_{N_0+j-1}\right)\\
+&=\lambda \sum_{j=0}^{\infty}(N_0+j)\left(-(N_0+j) P_{N_0+j} + (N_0+j) P_{N_0+j-1}-P_{N_0+j-1}\right)\\
+&=\lambda \sum_{j=0}^{\infty}\left(-(N_0+j)^2 P_{N_0+j} + (N_0+j)^2 P_{N_0+j-1}-(N_0+j)P_{N_0+j-1}\right)\\
+&=\lambda \sum_{j=0}^{\infty}\left(-(N_0+j)^2 P_{N_0+j} + (N_0^2+(2j-1) N_0+j^2-j) P_{N_0+j-1}\right)\\
+&=\lambda\left(N_0 P_{N_0}+(N_0+1) P_{N_0+1}+(N_0+2) P_{N_0+2}+\dots \right)\\
+&= \lambda \sum_{j=0}^{\infty}(j)P_{j}(t)\\
+&= \lambda E(t).
+\end{align*}
+Thus, we see that 
+$$\frac{dE(t)}{dt}=\lambda E(t),
+$$ 
+whose unique solution is readily found to be $E(t)=N_0 e^{\lambda t}$. And we're done.
+
+\section{Part c}
+In Part b we have shown that
+$$
+E(t) = \sum_{j=0}^{\infty} (N_{0}+j)P_{N_{0}+j}(t) = N_{0}e^{\lambda t},
+$$
+which means that to compute an expected population $E(t)$ at time $t$, we do not need to solve an infinite sum, but simply evaluate a function for a given initial population. Moreover, this shows that the above infinite sum is just the solution of an non-autonomous first order differential equation (it has exactly the same form) whose constant is $N_{0}$.\\
+More importantly, we can see that this model is simply the Malthusian growth model, where $N_{0}$ is just the starting population at $t=0$ and $\lambda$ is its growth rate. This is a well-known system that is readily analysed in all its properties. Therefore our study of the model is extremely simplified by our results obtained in Part b. 

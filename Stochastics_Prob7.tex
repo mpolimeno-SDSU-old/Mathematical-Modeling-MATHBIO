@@ -1,0 +1,25 @@
+\section{Part a}
+
+We perform two Monte Carlo simulations for the Schmitz and Kwak study of the Deaconesse Hospital, using the following assumptions:\\
+1 The daily case load is assumed to be fixed at 32 cases.\\
+2 Random numbers are generated independently for each day.\\
+3 All ENT, urology, and ophthalmology cases last 0.5 hours.\\
+4 Half the urology cases and all ophthalmology cases do not go to the recovery room.\\
+5 All ENT and the other half of urology cases go to the recovery room and are assumed to stay for 1.5 hours.\\
+6 Any operation over 0.5 hours is considered major and requires 3 hours in the recovery room.\\
+7 Surgery begins at 7:30 AM.\\
+8 Preparation time is 0.25 hours in the operating room.\\
+9 It takes 0.08 hours to transport patients from operating room to the recovery room.\\
+10 It takes 0.25 hours to prepare the recovery room for the next occupant.\\
+11 Operating rooms are used continuously as need arises with the first one vacated being the first one used.\\
+12 The first vacated recovery bed is the first one filled as needed.\\
+13 If no bed available in the recovery room, then a new one is created.\\
+
+Moreover, the simulation is run twice with 4 Operating Rooms and twice with 5 Operating Rooms.
+The 32 cases scheduled for the day are assigned 27 random numbers.
+The random numbers decide the type of surgery, which in turn determines how long the patient has surgery and if the patient goes to the recovery room and for how long.
+The surgeries start at 7:30 AM filling the 4(5) operating rooms. Immediately after surgery each patient is transported, and the operating room is cleared for the next patient waiting.
+The rules are followed until all 32 patients are seen, and the operating rooms and ICU beds are cleared.\\
+We get the following results:\\
+for the first 4-operating-rooms simulation, labelled $MCMC_{4_{1}}$ we get:
+$$

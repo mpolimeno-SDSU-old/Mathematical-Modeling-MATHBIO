@@ -1,0 +1,44 @@
+\section{Part a}
+We have a Malthusian growth model with a 4\% annual growth, which is given by
+$$
+P_{n+1} = 1.04P_{n}, \quad P_{0}= 50,
+$$
+where $n$ is in years.\\
+We want to find the population at $n=10$. This can be easily solved analytically by using the explicit expression
+$$
+P_{n} = 1.04^{n}P_{0},
+$$
+where $P_{0} = 50$.
+Thus, for $n=10$, we get
+$$
+P_{10}=1.04^{(10)}(50)=74.0122
+$$
+Now, to find the time at which the population doubles, we simply solve
+$$
+1.04^{n}P_{0}=2P_{0},
+$$
+which yields
+$$
+n = \frac{\log2}{\log1.04} \approx 17.67,
+$$
+which means that the population will double after roughly seventeen years and eight months.\\
+
+\section{Part b}
+Starting with a population of 50 individuals at $t=0$, i.e. $P_{0}=50$, and giving each individual a 4\% chance of producing offspring each year, we consider a birth-only model for said population and run a Monte Carlo simulation for 10 years. As we know what $P_{0}$ is already, we will list the populations from $t=1$ to $t=10$, $(P_{1},...,P_{10})$, which are found to be
+$$
+P = (50, 52, 53, 59, 64, 68, 70, 72, 74, 78).
+$$
+Thus, for this simulation, we see that there is no offspring produced going from $P_{0}$ to $P_{1}$, but then our expected value for $P_{10}$ is 78, which is rougly 5\% greater than our expected value of 74.0310 computed analytically in Part a.
+
+\section{Part c}
+Now we run the simulation of Part b 1000 times and we provide the average population at 10 years and its standard deviation.
+For $(P_{1},...,P_{10})$, we get
+$$
+P =(51.9570, 53.9890, 56.1420, 58.3660, 60.7440, 63.1640, 65.7250, 68.3320, 71.0770, 74.0310),
+$$
+with standard deviation $\sigma$ of
+$$
+\sigma = (1.3744, 1.9740, 2.4968, 2.9865, 3.5226, 3.9297, 4.3937, 4.8182, 5.3111, 5.7645)
+$$
+So, in Part a, we found our expected population after ten years to be $P_{10} = 74.0122$,
+and after one thousand simulations we have found a mean value of $P_{10}=74.0310$, which is indeed very close to the expected value (in fact 0.25\permil\quad greater). However, if we take a look at the standard deviation for $n=10$, then we see that in the different simulation paths we have quite different values as we can notice by looking at $\sigma_{10}=5.7645$.\\ Moreover, we see that the standard deviation of the population seem to be steadily increasing as time goes on, which seems to indicate that this model is not an accurate representation of population dynamics as time moves forward.
